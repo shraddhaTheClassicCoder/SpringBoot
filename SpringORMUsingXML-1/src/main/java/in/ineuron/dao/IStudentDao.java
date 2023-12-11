@@ -3,11 +3,8 @@ package in.ineuron.dao;
 import java.util.List;
 
 import in.ineuron.bo.StudentBO;
-import in.ineuron.dto.Student;
 
 public interface IStudentDao {
-
-	
 
 	public int insert(StudentBO bo);
 	public void delete(int id);

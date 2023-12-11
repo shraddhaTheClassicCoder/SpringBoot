@@ -1,5 +1,6 @@
 package in.ineuron.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,7 +14,7 @@ import in.ineuron.dao.IStudentDao;
 import in.ineuron.dto.Student;
 
 @Service
-@Transactional 
+@Transactional
 public class StudentServiceImpl implements IStudentService {
 
 	@Autowired
@@ -32,7 +33,9 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		
+		dao.delete(id);
+		
 
 	}
 
@@ -50,14 +53,35 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public Student getStudent(int id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		StudentBO bo = dao.getStudent(id);
+
+		Student std = new Student();
+
+		BeanUtils.copyProperties(bo, std);
+
+		return std;
 	}
 
 	@Override
 	public List<Student> getAllStudent() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		
+		List<StudentBO> studentBo=dao.getAllStudent();
+		
+		System.out.println(studentBo);
+		
+		List<Student> student=new ArrayList<Student>();
+		
+		studentBo.forEach(bo->{
+			Student stud=new Student();
+			
+			BeanUtils.copyProperties(bo, stud);
+			
+			student.add(stud);
+		});
+		
+		return student;
 	}
 
 	@Override

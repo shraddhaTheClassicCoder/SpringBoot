@@ -42,12 +42,10 @@ public class StudentBO {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
+	
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", saddress=" + saddress + ", age=" + age + "]";
 	}
 
-	
-	
-	
 }
