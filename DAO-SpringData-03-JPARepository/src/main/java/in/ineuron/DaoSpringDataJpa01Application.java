@@ -1,5 +1,8 @@
 package in.ineuron;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -26,19 +29,22 @@ public class DaoSpringDataJpa01Application {
 		 * "price").forEach(System.out::println);
 		 */
 
-		try {
-			CoronaVaccine vaccine = service.getVaccineById(10L);
-			if (vaccine != null) {
-				System.out.println("Vaccine Details Are::" + vaccine);
-			} else {
-				System.out.println("Record not available for given Id"+vaccine.getRegNo());
-			}
+		/*
+		 * try { CoronaVaccine vaccine = service.getVaccineById(3L); if (vaccine !=
+		 * null) { System.out.println("Vaccine Details Are::" + vaccine); } else {
+		 * System.out.println("Record not available for given Id"+vaccine.getRegNo()); }
+		 * 
+		 * } catch (DataAccessException e) {
+		 * 
+		 * e.printStackTrace(); }
+		 */
 
-		} catch (DataAccessException e) {
+		List<Long> list = new ArrayList<Long>();
+		list.add(6L);
+		list.add(7L);
+		list.add(8L);
 
-			e.printStackTrace();
-		}
-
+		System.out.println(service.removeVaccineByRegNo(list));
 		((ConfigurableApplicationContext) context).close();
 	}
 
